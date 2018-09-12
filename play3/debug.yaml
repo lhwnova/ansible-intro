@@ -1,0 +1,18 @@
+--- # Testing how variable work in the vars section of playbook
+- hosts: '{{myhost}}'
+  remote_user: ansible
+  become: yes
+  become_method: sudo
+  connection: ssh
+  gather_facts: '{{gather}}'
+  vars:
+    myhost: mycentos
+    gather: no
+    pkg: telnet
+  tasks:
+  - name: Install telnet package
+    yum:
+      name: '{{pkg}}'
+      state: latest
+    register: result
+  - debug: var=result

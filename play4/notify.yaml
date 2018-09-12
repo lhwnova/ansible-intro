@@ -1,0 +1,23 @@
+--- # This is a structural YAML example to install httpd on centos
+- hosts: mycentos
+  remote_user: ansible 
+  become: yes
+  become_method: sudo
+  connection: ssh
+  gather_facts: yes 
+  tasks: 
+  - name: install httpd server on CentOS 
+    yum:
+      name: httpd
+      state: latest 
+    notify:
+    - enable and start the httpd service
+  handlers:
+  - name: enable and start the httpd service
+    service: 
+     name: httpd
+     enabled: yes
+     state: restarted     
+
+
+
