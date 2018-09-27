@@ -1,0 +1,6 @@
+ansible-playbook -b -i myhost ping.yml --ask-vault-pass
+
+ansible-playbook -b -i 10.150.88.1, ping.yml --ask-become-pass
+
+
+
