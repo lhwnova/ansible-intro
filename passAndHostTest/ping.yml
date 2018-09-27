@@ -1,0 +1,11 @@
+--- # Ping Example --- ansible-playbook -b -i 10.150.88.1, ping.yml --ask-become-pass
+- hosts: all
+  remote_user: root
+  become: yes
+  become_method: su
+  connection: local
+  gather_facts: no
+  tasks: 
+  - name: ping 
+    ping: 
+ 
