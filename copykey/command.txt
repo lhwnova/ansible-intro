@@ -1,0 +1,1 @@
+ansible-playbook copykey.yml -i host --become --ask-pass
