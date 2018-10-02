@@ -1,4 +1,4 @@
---- # Copy ssh file 
+--- # Ansible initial setup -  Copy ssh key to remote host  
 - hosts: all
   remote_user: root
   become: yes
@@ -6,16 +6,12 @@
   connection: ssh
   gather_facts: no
   tasks:
-  #- name: Check for .ssh 
-   # stat: path=/root/.ssh
-    #register: p
 
   - name: creat directory if not exist 
     file:
      path: /root/.ssh
      state: directory
      mode: 0755
-     #when: not p.stat.exists
 
   - name: copying file to remote host
     copy:
@@ -25,7 +21,7 @@
      group: root
      mode: 0644
 
-  - name: Set authorized key took from file
+  - name: Setup authorized key from copied file
     authorized_key:
      user: root
      state: present
